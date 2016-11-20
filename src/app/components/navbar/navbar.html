@@ -1,2 +1,14 @@
-<a ui-sref="add">Add</a>
-<a ui-sref="list">List</a>
+<header class="header">
+
+  <span class="header-icon icon-menu" ng-click="nav.toggleMenu()" ng-if="!nav.menuOpen"></span>
+  <span class="header-icon icon-cancel" ng-click="nav.toggleMenu()" ng-if="nav.menuOpen"></span>
+  <a href="/#/" class="header-logo">Dataphi</a>
+
+  <nav class="menu" ng-class="{ 'open': nav.menuOpen, 'closed': !nav.menuOpen}">
+    <ul>
+      <li ng-class="{ 'active': nav.active===0}" ui-sref="add"><a>Add Patient</a></li>
+      <li ng-class="{ 'active': nav.active===1}" ui-sref="list"><a>Patient Directory</a></li>
+    </ul>
+  </nav>
+
+</header>

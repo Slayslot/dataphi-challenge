@@ -3,11 +3,10 @@ $mobile-width-2: 360px;
 $tablet-width: 768px;
 $desktop-width: 980px;
 $mobile-height: 550px;
-$white: #fff;
 $midnightblue: #2c3e50;
-$asbestos: #7f8c8d;
-$silver: #bdc3c7;
-$background: #F2F4F7;
+$belizehole: #2980b9;
+$peterriver: #3498db;
+$clouds: #ecf0f1;
 
 @mixin media-min-width($width){
   @media(min-width: $width){
@@ -32,5 +31,181 @@ $background: #F2F4F7;
 @mixin media-max-height($height){
   @media (max-height: $height){
     @content;
+  }
+}
+//fontello
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.eot?13969553');
+  src: url('../fonts/fontello.eot?13969553#iefix') format('embedded-opentype'),
+       url('../fonts/fontello.woff2?13969553') format('woff2'),
+       url('../fonts/fontello.woff?13969553') format('woff'),
+       url('../fonts/fontello.ttf?13969553') format('truetype'),
+       url('../fonts/fontello.svg?13969553#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../fonts/fontello.svg?13969553#fontello') format('svg');
+  }
+}
+*/
+
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-cancel:before { content: '\e805'; } /* '' */
+.icon-menu:before { content: '\f0c9'; } /* '' */
+//fontello
+/* BASE */
+html,body {
+  font-size: 1em;
+  line-height: 1.4;
+  height: 100%;
+  padding: 0;
+  background: $clouds;
+  overflow-x: hidden;
+  min-width: $mobile-width;
+
+  @include media-max-width($mobile-width){
+    overflow-x: scroll;
+  }
+}
+
+/* HEADER */
+.header {
+  height: 70px;
+  line-height: 70px;
+  color: $clouds;
+  background-color: $peterriver;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .header-logo {
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 0 25px;
+    float: left;
+  }
+
+  .header-icon{
+    display: none;
+    cursor: pointer;
+    @include media-max-width($tablet-width){
+      font-size: 1.3em;
+      position: relative;
+      display: block;
+      float: right;
+      width: 50px;
+      height: 70px;
+      cursor: pointer;
+    }
+  }
+}
+
+/* MENU */
+.open{
+  @include media-max-width($tablet-width){
+    background-color: $peterriver;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 70px;
+    opacity: 1;
+  }
+}
+.closed{
+  @include media-max-width($tablet-width){
+    height: 0;
+    opacity: 0;
+  }
+}
+.menu {
+  float: right;
+  padding: 0 25px;
+  @include media-max-width($tablet-width){
+    padding: 0;
+  }
+
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include media-max-width($tablet-width){
+      position: absolute;
+      width: 100vw;
+      top: 42%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+    }
+    .active{
+      background: $belizehole;
+    }
+    li{
+      display: inline-block;
+      cursor: pointer;
+      @include media-max-width($tablet-width){
+        display: block;
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        padding: 1em;
+      }
+    }
+  }
+  a{
+    padding: 0 10px;
+
+    @include media-max-width($tablet-width){
+      display: block;
+      text-align: center;
+      line-height: 40px;
+      letter-spacing: 0.2em;
+      text-align: left;
+    }
+
+    &:hover{
+      color: #fff;
+    }
   }
 }
