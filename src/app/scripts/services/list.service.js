@@ -6,8 +6,10 @@ angular
    .service('ListService', ListServiceFunction);
 
  /** @ngInject */
- function ListServiceFunction($http) {
+ function ListServiceFunction($http, ProgressBarService) {
    var vm = this;
+   ProgressBarService.setPreloaderConfig();
+   ProgressBarService.load();
 
    vm.fetch = function(){
       return $http({

@@ -6,8 +6,11 @@ angular
    .service('AddService', AddServiceFunction);
 
  /** @ngInject */
- function AddServiceFunction($log) {
+ function AddServiceFunction($log, ProgressBarService) {
    var vm = this;
+   ProgressBarService.setPreloaderConfig();
+   ProgressBarService.load();
+
 
    vm.genders = function(){
      return [
@@ -18,6 +21,7 @@ angular
    }
    vm.update = function(data){
      $log.info('Hit the servers with',data);
+     ProgressBarService.stop();
    }
 
  }
