@@ -6,7 +6,7 @@ angular
    .service('AddService', AddServiceFunction);
 
  /** @ngInject */
- function AddServiceFunction($log, ProgressBarService) {
+ function AddServiceFunction($log, ProgressBarService, $state, toastr) {
    var vm = this;
    ProgressBarService.setPreloaderConfig();
    ProgressBarService.load();
@@ -21,7 +21,9 @@ angular
    }
    vm.update = function(data){
      $log.info('Hit the servers with',data);
+     $state.reload();
      ProgressBarService.stop();
+     toastr.success('Patient Successfully added');
    }
 
  }

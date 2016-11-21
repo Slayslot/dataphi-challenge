@@ -5,6 +5,7 @@
     .module('dataphi', [
         'ui.router',
         'jsf',
+        'toastr',
         'ngProgress'
     ]);
 
