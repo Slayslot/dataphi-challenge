@@ -7,7 +7,12 @@
 
   /** @ngInject */
   function AddCtrlFunction($log, AddService) {
-    $log.info('Add Controller reporting in!');
-    $log.info(AddService.fetch());
+    var vm = this;
+    vm.genderOptions = AddService.genders();
+
+    vm.update = function(){
+      AddService.update(vm.formdata);
+    }
+
   }
 })();

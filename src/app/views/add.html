@@ -1,1 +1,100 @@
-Add
+<ng-form name="addpatient">
+  <div class="input-container">
+    <label for="fname">First Name</label>
+    <input name="fname"
+           class="form-control"
+           type="text"
+           placeholder="John"
+           ng-model="add.formdata.firstname"
+           pattern="^[a-z ,.'-]+$"
+           title="This field should only contain alphabets."
+           required>
+  </div>
+  <p class="error text-center"
+        ng-show="!addpatient.fname.$pristine && addpatient.fname.$invalid ||
+        addpatient.fname.$error.pattern">
+        This field should only contain alphabets.
+  </p>
+  <div class="input-container">
+    <label for="lname">Last Name</label>
+    <input name="lname"
+           class="form-control"
+           type="text"
+           placeholder="Doe"
+           ng-model="add.formdata.lastname"
+           pattern="^[a-z ,.'-]+$"
+           required>
+  </div>
+  <p class="error text-center"
+        ng-show="!addpatient.lname.$pristine && addpatient.lname.$invalid ||
+        addpatient.lname.$error.pattern">
+        This field should only contain alphabets.
+  </p>
+  <div class="input-container">
+    <label for="age">Age</label>
+    <input name="age"
+           class="form-control"
+           type="number"
+           placeholder="21"
+           min="1"
+           max="100"
+           title="Age must be between 1-100."
+           ng-model="add.formdata.age"
+           required>
+  </div>
+  <p class="error text-center"
+        ng-show="!addpatient.age.$pristine && addpatient.age.$invalid ||
+        addpatient.age.$error.pattern">
+        Age must be between 1-100.
+  </p>
+  <div class="input-container">
+    <label for="gender" class="">Gender</label>
+      <select name="gender"
+              class="form-control"
+              ng-model="add.formdata.gender"
+              required>
+              <option ng-repeat="gender in add.genderOptions"
+                      value="{{gender.value}}">
+                      {{gender.value}}
+              </option>
+      </select>
+  </div>
+  <div class="input-container">
+    <label for="phone">Patient's Contact Number</label>
+    <input name="phone"
+           class="form-control"
+           type="number"
+           placeholder="9999123234"
+           pattern="\d{10,11}"
+           title="Contact Number must be 10-11 digits long."
+           ng-model="add.formdata.phone"
+           required>
+  </div>
+  <p class="error text-center"
+        ng-show="!addpatient.phone.$pristine && addpatient.phone.$invalid ||
+        addpatient.phone.$error.pattern">
+        Contact Number must be 10-11 digits long.
+  </p>
+  <div class="input-container">
+    <label for="details">Details</label>
+    <input name="details"
+           class="form-control"
+           type="textarea"
+           placeholder="Brief description of the patient's problem"
+           pattern="[a-zA-Z0-9@=\-']+"
+           title="Please don't use illegal characters."
+           ng-model="add.formdata.details"
+           required>
+  </div>
+  <p class="error text-center"
+        ng-show="!addpatient.details.$pristine && addpatient.details.$invalid ||
+        addpatient.details.$error.pattern">
+        Please don't use illegal characters.
+  </p>
+  <button value="Submit"
+        class="center-block button button-block"
+        ng-click="add.update()"
+        ng-disabled="addpatient.$invalid && !addpatient.$valid">
+        Submit
+  </button>
+</ng-form>

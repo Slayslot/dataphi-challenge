@@ -6,12 +6,20 @@ angular
    .service('AddService', AddServiceFunction);
 
  /** @ngInject */
- function AddServiceFunction() {
+ function AddServiceFunction($log) {
    var vm = this;
 
-   vm.fetch = function(){
-     return 'Add Service reporting in';
+   vm.genders = function(){
+     return [
+          {value: 'Male'},
+          {value: 'Female'},
+          {value: 'Others'}
+        ]
    }
+   vm.update = function(data){
+     $log.info('Hit the servers with',data);
+   }
+
  }
 
  })();
