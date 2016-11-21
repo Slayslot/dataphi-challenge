@@ -7,7 +7,9 @@
 
   /** @ngInject */
   function ListCtrlFunction($log, ListService) {
-    $log.info('List Controller reporting in!');
-    $log.info(ListService.fetch());
+    var vm = this;
+    ListService.fetch().then(function(response){
+      vm.patients = response.data;
+    });
   }
 })();

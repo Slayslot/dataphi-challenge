@@ -6,11 +6,15 @@ angular
    .service('ListService', ListServiceFunction);
 
  /** @ngInject */
- function ListServiceFunction() {
+ function ListServiceFunction($http) {
    var vm = this;
 
    vm.fetch = function(){
-     return 'List Service reporting in';
+      return $http({
+        method: 'GET',
+        url: '/patients',
+        cache: true
+      });
    }
  }
 

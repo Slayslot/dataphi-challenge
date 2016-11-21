@@ -7,6 +7,10 @@ $midnightblue: #2c3e50;
 $belizehole: #2980b9;
 $peterriver: #3498db;
 $clouds: #ecf0f1;
+$green: #4CAF50;
+$green-dark: #388E3C;
+$red: #c0392b;
+
 @mixin media-min-width($width) {
    @media(min-width: $width){
     @content;
@@ -88,6 +92,9 @@ $clouds: #ecf0f1;
 }
 /* '' */
 //fontello
+//import boostrap
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+//import bootstrap
 /* BASE */
 body,
 html {
@@ -148,6 +155,7 @@ html {
     position: fixed;
     top: 70px;
     opacity: 1;
+    z-index: 1000;
   }
 }
 
@@ -155,6 +163,17 @@ html {
   @include media-max-width($tablet-width) {
     height: 0;
     opacity: 0;
+    z-index: -1;
+  }
+  *{
+    @include media-max-width($tablet-width) {
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      z-index: -1;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
   }
 }
 
@@ -207,5 +226,92 @@ html {
     &:hover {
       color: #fff;
     }
+  }
+}
+/*FORMS*/
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: $green;
+  color: $clouds;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  margin-top: 1.5em;
+
+  &[disabled]{
+    cursor: not-allowed;
+    opacity: 0.4;
+
+    &:hover{
+      background: $green;
+    }
+  }
+
+  &:hover,&:focus{
+    background: $green-dark;
+  }
+}
+
+.button-block {
+  display: block;
+  width: 50%;
+  @include media-max-width($mobile-height){
+    width: 70%;
+  }
+}
+.input-container{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  label{
+    margin-right: 5em;
+    margin-top: 0.5em;
+    min-width: 100px;
+    max-width: 100px;
+    @include media-max-width($mobile-height){
+      min-width: 80px;
+      max-width: 80px;
+      margin-left:1em;
+      margin-right:3.5em;
+    }
+  }
+  textarea{
+    resize: none;
+    height: 150px;
+  }
+  input,select,textarea{
+    max-width: 400px;
+    @include media-max-width($mobile-height){
+      min-width: 200px;
+      max-width: 200px;
+    }
+  }
+}
+.error{
+  font-size: 0.9em;
+  color: $red;
+}
+/*Tables*/
+table{
+  margin-top: 2em;
+  tr:first-child{
+    background:$belizehole;
+    color: $clouds;
+    th{
+      padding: 12px !important;
+    }
+  }
+  td{
+    padding: 12px !important;
+    border-bottom: 1px solid #7f8c8d;
+    color: $midnightblue;
   }
 }

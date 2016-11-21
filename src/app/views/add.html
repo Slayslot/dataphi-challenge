@@ -60,7 +60,7 @@
       </select>
   </div>
   <div class="input-container">
-    <label for="phone">Patient's Contact Number</label>
+    <label for="phone">Contact</label>
     <input name="phone"
            class="form-control"
            type="text"
@@ -77,14 +77,15 @@
   </p>
   <div class="input-container">
     <label for="details">Details</label>
-    <input name="details"
+    <textarea name="details"
            class="form-control"
-           type="textarea"
            placeholder="Brief description of the patient's problem"
            pattern="[a-zA-Z0-9@=\-']+"
+           maxlength="300"
            title="Please don't use illegal characters."
            ng-model="add.formdata.details"
            required>
+     </textarea>
   </div>
   <p class="error text-center"
         ng-show="!addpatient.details.$pristine && addpatient.details.$invalid ||

@@ -1,1 +1,38 @@
-List
+<h3 class="text-center">Search by Patient Name</h3>
+<div class="input-container">
+  <label for="search">First Name</label>
+  <input name="search"
+         class="form-control"
+         type="text"
+         placeholder="Search by patient name"
+         ng-model="list.patientname.firstName">
+</div>
+<div class="input-container">
+  <label for="search">Last Name</label>
+  <input name="search"
+         class="form-control"
+         type="text"
+         placeholder="Search by patient name"
+         ng-model="list.patientname.lastName">
+</div>
+<div class="table-responsive">
+  <table class="table table-condensed">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Phone</th>
+      <th>Details</th>
+    </tr>
+    <tr ng-repeat="patient in filteredItems = (list.patients | filter: list.patientname)">
+      <td>{{::patient.firstName}}</td>
+      <td>{{::patient.lastName}}</td>
+      <td>{{::patient.age}}</td>
+      <td>{{::patient.gender}}</td>
+      <td>{{::patient.phone}}</td>
+      <td>{{::patient.details}}</td>
+    </tr>
+  </table>
+  <p class="text-center error" ng-if="!filteredItems.length">Patient not found</p>
+</div>
