@@ -4,6 +4,7 @@
   angular
     .module('dataphi', [
         'ui.router',
+        'jsf',
         'ngProgress'
     ]);
 
